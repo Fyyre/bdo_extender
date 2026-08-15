@@ -1,0 +1,252 @@
+
+
+// 0000000145DA8AC0
+// byte ptr ds:[rax+417]=[blackdesert64.0000000145DA8ED7]=0
+// ClientAuthManager::updateSecurityModule      FALSE
+// isNotQa -> 0000000145DA8DA0;
+
+struct PAGameServiceTypeManager
+{
+                bool _isLoaded;
+                bool _isStartXboxLoaded;
+                bool _isXboxLoaded;
+    /* 0003 */  PA_GAME_SERVICE_TYPE _serviceType;
+    /* 0004 */  PA_GAME_NATION_TYPE _serviceNation;
+    /* 0005 */  char padding007[3];
+    /* 0008 */  uint8_t _authenticDomainOrIp[16];
+    /* 0010 */  char padding0016[16];
+    /* 001B */  uint16_t _authenticPortNo;
+    /* 001C */  char padding0070[70];
+    /* 0164*/   char padding0164[0x164];
+
+
+    /* 0180 */ bool dontUsePublisherAuthentication;
+    /* 0181 */ bool dontCreateType;
+    /* 0182 */ bool isUseServerBExcel;
+    /* 0183 */ bool isConferenceMode;
+    /* 0184 */ bool isLoadBinaryStaticStatus;
+    /* 0185 */ bool isLoadBinaryBriefActionChart;
+    /* 0186 */ bool isUseSecureDev;
+    /* 0187 */ bool isLastTrIdLog;
+    /* 0188 */ bool unk0188;
+    /* 0189 */ bool isShowSystemMessageInKorean;
+    /* 0190 */ char padding0157[0x157];
+
+    /* 0230 */ char gameTradeMarketUrl[0x20];
+    /* 0250 */ char AUTHURL[0x20];
+    /* 0270 */ char BILLINGURL[0x20];
+
+
+
+    /* 0290 */ bool isConsoleDevServer;
+    /* 0291*/  bool isLoadDynamicBSS;
+    /* 0292*/  bool isUseSimplePlayerAction;
+    /* 0293*/  bool isShadowConsole;
+    /* 0294 */ bool isUseNexonPCRoomTest;
+    /* 0295 */ bool isNotSnailLauncher;
+    /* 0296 */ bool isWeGameLauncher;
+    /* 0296 */ bool isUseCrcCheck;
+
+    /* 02E0 */ bool isNotQA;
+    /* 02E1 */ uint8_t unk02E1[0xEB];
+
+    /* 02E4 */ uint64_t unk02E4;
+    /* 02E8 */
+
+    /* 02EC */ uint64_t unk02EC;
+    /* 02F0 */
+
+    /* 02E4 */ uint64_t unk02F4;
+    /* 02F8 */
+
+    /* 0301 */ bool NEWUI;
+    /* 0302 */ bool CONSOLENEWUI;
+    /* 0303 */ bool USETEXUREID;
+
+    /* 03CB */ bool testBotMode;
+    /* 03CC */ bool isSkipSecurityModule;    // byte ptr ds:[rax+3CC]=[blackdesert64.0000000145DA8E8C]=0
+    /* 03CD */ bool unk03C8;
+    /* 03CF */ bool UseGameguard;
+
+               char padding0042[0x42];
+
+    /* 0411 */ uint8_t ShadowServiceType;
+
+    /* 0418 */
+               char padding004C[0x4C];
+    /* 045D */ bool UseEAC;     // Offset relocation from 0x417 to 0x45D with version 398535
+               char padding0074[0x74];
+    /* 04D1 */ bool isUseEACReport;
+
+    /* 0549 */ bool REBOOTCHARACTER;
+};
+static_assert(sizeof(PAGameServiceTypeManager) == 0x4D1, "");   //0x48A, "");
+
+// Objects
+extern PAGameServiceTypeManager& TypeManager;   // Function that reads service.ini initializes this object.
+
+// 144229C7C UseDynamicBSS   db 1
+
+struct PAGameServiceTypeManager
+{
+    /* 0000 */ uint8_t unk0000[3];
+    /* 0003 */ uint8_t Type;
+    /* 0004 */ uint8_t unk0004[0x17C];
+    /* 0182 */ bool isUseServerBExcel;
+    /* 0183 */ bool isConferenceMode;
+    /* 0184 */ bool isLoadBinaryStaticStatus;
+    /* 0185 */ bool isLoadBinaryBriefActionChart;
+    /* 0186 */ bool isUseSecureDev;
+    /* 0187 */ bool isLastTrIdLog;
+    /* 0188 */ uint8_t unk0186[0x15A];
+    /* 02E0 */ bool isNotQA;
+    /* 02E1 */ uint8_t unk02E1[0xEE];
+    /* 03CF */ bool UseGameguard;
+    /* 03D0 */ uint8_t pad03D0[0x047];
+    /* 0417 */ bool IsMaybeUseEAC;
+    /* 0418 */ uint8_t pad0001;
+
+
+
+
+};
+static_assert(sizeof(PAGameServiceTypeManager) == 0x419, "");
+constexpr size_t sizeOfT = sizeof(PAGameServiceTypeManager);
+
+// 0000000145DA8AC0
+// byte ptr ds:[rax+417]=[blackdesert64.0000000145DA8ED7]=0
+// ClientAuthManager::updateSecurityModule      FALSE
+// isNotQa -> 0000000145DA8DA0;
+#//ifdef _NEWPAGameServiceTypeManager
+
+struct _MyPAGameServiceTypeManager
+{
+                bool _isLoaded;
+                bool _isStartXboxLoaded;
+                bool _isXboxLoaded;
+    /* 0003 */  PA_GAME_SERVICE_TYPE _serviceType;
+    /* 0004 */  PA_GAME_NATION_TYPE _serviceNation;
+                std::string _authenticationDomainOrIp;
+                uint16_t _authenticPortNo;
+                std::string _serverManagerDomainOrIp;
+                uint16_t _serverManagerPortNo;
+                uint8_t unk0134[0x134];
+    /* 0180 */  bool dontUsePublisherAuthentication;
+    /* 0181 */  bool dontCreateType;
+    /* 0182 */  bool isUseServerBExcel;
+    /* 0183 */  bool isConferenceMode;
+    /* 0184 */  bool isLoadBinaryStaticStatus;
+    /* 0185 */  bool isLoadBinaryBriefActionChart;
+    /* 0186 */  bool isUseSecureDev;
+    /* 0187 */  bool isLastTrIdLog;
+    /* 0188 */  bool unk0188;
+    /* 0189 */  bool isShowSystemMessageInKorean;
+
+                char pad[0x0A0];
+
+    /* 0230 */ std::string gameTradeMarketUrl;
+    /* 0250 */ std::string AuthUrl;
+    /* 0270 */ std::string BillingUrl;
+    std::string BillingUrl2;
+    /* 0290 */ bool isConsoleDevServer;
+    /* 0291*/ bool isLoadDynamicBSS;
+    /* 0292*/ bool isUseSimplePlayerAction;
+    /* 0293*/ bool isShadowConsole;
+    /* 0294 */ bool isUseNexonPCRoomTest;
+    /* 0295 */ bool isNotSnailLauncher;
+    /* 0296 */ bool isWeGameLauncher;
+    /* 0296 */ bool isUseCrcCheck;
+
+};
+
+constexpr size_t sizeOfT = sizeof(_MyPAGameServiceTypeManager);
+
+struct _NEWPAGameServiceTypeManager
+{
+                bool _isLoaded;
+                bool _isStartXboxLoaded;
+                bool _isXboxLoaded;
+    /* 0003 */  PA_GAME_SERVICE_TYPE _serviceType;
+    /* 0004 */  PA_GAME_NATION_TYPE _serviceNation;
+                std::string _authenticationDomainOrIp;
+                uint16_t _authenticPortNo;
+                std::string _serverManagerDomainOrIp;
+                uint16_t _serverManagerPortNo;
+    /* 0134 */  uint8_t unk0134[0x134];
+
+
+    /* 0180 */  bool dontUsePublisherAuthentication;
+    /* 0181 */  bool dontCreateType;
+    /* 0182 */  bool isUseServerBExcel;
+    /* 0183 */  bool isConferenceMode;
+    /* 0184 */  bool isLoadBinaryStaticStatus;
+    /* 0185 */  bool isLoadBinaryBriefActionChart;
+    /* 0186 */  bool isUseSecureDev;
+    /* 0187 */  bool isLastTrIdLog;
+    /* 0188 */  bool unk0188;
+    /* 0189 */  bool isShowSystemMessageInKorean;
+
+    /* 018A */  char padding0157[0xA0];
+
+    /* 0230 */  std::string gameTradeMarketUrl;
+    /* 0250 */  std::string AuthUrl;
+    /* 0270 */  std::string BillingUrl;
+
+    /* 0290 */ bool isConsoleDevServer;
+    /* 0291*/  bool isLoadDynamicBSS;
+    /* 0292*/  bool isUseSimplePlayerAction;
+    /* 0293*/  bool isShadowConsole;
+    /* 0294 */ bool isUseNexonPCRoomTest;
+    /* 0295 */ bool isNotSnailLauncher;
+    /* 0296 */ bool isWeGameLauncher;
+    /* 0296 */ bool isUseCrcCheck;
+
+               char padding0297[0x4A];
+
+    /* 02E0 */ bool isNotQA;
+
+    /* 02E1 */ uint32_t unk02E1;
+
+    /* 02E4 */ uint64_t unk02E4;
+    /* 02E8 */
+
+    /* 02EC */ uint64_t unk02EC;
+    /* 02F0 */
+
+    /* 02E4 */ uint64_t unk02F4;
+    /* 02F8 */
+
+    /* 0301 */ bool NEWUI;
+    /* 0302 */ bool CONSOLENEWUI;
+    /* 0303 */ bool USETEXUREID;
+
+    /* 03CB */ bool testBotMode;
+    /* 03CC */ bool isSkipSecurityModule;    // byte ptr ds:[rax+3CC]=[blackdesert64.0000000145DA8E8C]=0
+    /* 03CD */ bool unk03C8;
+    /* 03CF */ bool UseGameguard;
+
+               char padding0042[0x42];
+
+    /* 0411 */ uint8_t ShadowServiceType;
+
+    /* 0418 */
+               char padding004C[0x45];
+    /* 045D */ bool UseEAC;     // Offset relocation from 0x417 to 0x45D with version 398535
+               char padding0074[0xB9];
+    /* 04D1 */ bool isUseEACReport;
+               char padding04D2[0x78];
+    /* 0549 */ bool REBOOTCHARACTER;
+};
+static_assert(sizeof(_NEWPAGameServiceTypeManager) == 0x0557, "");   //0x48A, "");
+//#endif /* _NewPAGameServiceTypeManager */
+
+constexpr size_t sizeOfT = sizeof(_NEWPAGameServiceTypeManager);
+
+// Objects
+extern PAGameServiceTypeManager& TypeManager;   // Function that reads service.ini initializes this object.
+
+// 144229C7C UseDynamicBSS   db 1
+
+
+
+

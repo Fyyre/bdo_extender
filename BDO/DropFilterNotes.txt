@@ -1,0 +1,59 @@
+//df - print current filter config
+//df all - reset drop filter, drop all items without filtering.
+//df none - drop nothing.
+//df white all - drop all white items.
+//df white none - drop no white items (except silver).
+//df white 300 - drop white items if their sell price is 300 silver or more. Items that have no sell price (like https://bdocodex.com/us/item/11639/) are not filtered by price.
+//df white +10 - drop all non-equipment items and drop only white equipment of at least +10 enhancement level.
+//df white 300 +10 or /df white +10 300 - drop all white items that are worth 300 silver or more, equipment must also be +10 or more. Order of price and ehnancement parameters does not matter.
+//df white 300 +10 green +5 1000 - multiple grades can be configured with one command.
+
+
+// Extended class with our injected variables. All instances of PlayerActor are instances of PlayerActorEx in fieldserver.
+class PlayerActorEx : public PlayerActor
+{
+public:
+    struct DropFilterConfig
+    {
+        enum
+        {
+            All,
+            None,
+            Condition
+        } FilterType;
+        unsigned Price = 0;
+        unsigned EnhanceLv = 0;
+    };
+    /*      */ DropFilterConfig DropFilter[ItemGrade_Count];
+    /*      */ std::set<int32_t> DropFilterKeep;
+    /*      */ time_t PremiumEndTime;
+
+
+bool PlayerActorEx::IsPremium() const
+{
+    return time(nullptr) < GetPremiumEndTime();
+}
+
+static void OnAuthenticatePlayer(void* _this, PlayerActorEx* player)
+{
+    if (player != nullptr && player->IsValidPlayerActor())
+    {
+        static nanodbc::statement stmt = []() {
+            nanodbc::statement stmt(Database);
+            nanodbc::prepare(stmt, fmt::format(L"SELECT _premiumEndTime FROM [{}].[PaGamePrivate].TblUserInformation WHERE _userNo = ?", Config.WorldDB));
+            return stmt;
+        }();
+        int userNo = player->UserNo;
+        stmt.bind(0, &userNo);
+        nanodbc::result res = nanodbc::execute(stmt);
+        if (res.next() && !res.is_null(0))
+        {
+            nanodbc::timestamp stamp = res.get<nanodbc::timestamp>(0);
+            player->GetPremiumEndTime() = nanodbc_to_time_t(stamp);
+        }
+    }
+    hooker::thiscall<void>(0x01406547D0, _this, player);
+}
+
+
+
