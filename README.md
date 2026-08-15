@@ -1,4 +1,4 @@
-# bns-nogg
+# bdo_extender
 
 Archival snapshot of a BDO Client Extender by Fyyre
 
