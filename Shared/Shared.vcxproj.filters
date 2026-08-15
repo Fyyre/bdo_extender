@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="hooker">
+      <UniqueIdentifier>{bd96cadb-a66a-478e-895d-53ea0c630d37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LZ4">
+      <UniqueIdentifier>{ff0581a8-7bfc-4b2d-9477-7c5e3fd31205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ntdll">
+      <UniqueIdentifier>{493a4f55-818a-4285-ae77-338de5c09a8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hooker\hooker.h">
+      <Filter>hooker</Filter>
+    </ClInclude>
+    <ClInclude Include="hooker\hooker.hpp">
+      <Filter>hooker</Filter>
+    </ClInclude>
+    <ClInclude Include="LZ4\lz4.h">
+      <Filter>LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="LZ4\lz4hc.h">
+      <Filter>LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="LZ4\lz4opt.h">
+      <Filter>LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h" />
+    <ClInclude Include="ini.h" />
+    <ClInclude Include="ntdll\ntstatus.h">
+      <Filter>ntdll</Filter>
+    </ClInclude>
+    <ClInclude Include="ntdll\ntdll.h">
+      <Filter>ntdll</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hooker\hooker.c">
+      <Filter>hooker</Filter>
+    </ClCompile>
+    <ClCompile Include="LZ4\lz4.c">
+      <Filter>LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="LZ4\lz4hc.c">
+      <Filter>LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp" />
+    <ClCompile Include="ini.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ntdll\ntdll64.def">
+      <Filter>ntdll</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ntdll\ntdll64.lib">
+      <Filter>ntdll</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
